@@ -1,0 +1,36 @@
+#https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
+name: 'Export Project'
+description: 'Export the project'
+inputs:
+  godot-version:
+    description: 'Version of godot used'
+    required: true
+  export-name:
+    description: 'Name of the exported file'
+    required: true
+  export-type:
+    description: 'Type of export used'
+    required: true
+    default: "web"
+    options: 
+    - web
+    - windows
+runs:
+  using: "composite"
+  steps:
+    - name: Setup
+      shell: bash
+      run: |
+        mkdir -v -p ~/.local/share/godot/templates
+        mv /root/.local/share/godot/templates/${{ inputs.godot-version }}.stable ~/.local/share/godot/templates/${{ inputs.godot-version }}.stable
+        ln -s ~/.local/share/godot/templates ~/.local/share/godot/export_templates
+    - name: Build
+      shell: bash
+      run: |
+        mkdir -v -p build/${{ inputs.export-type }}
+        godot --headless -v --export-release "${{ inputs.export-type }}" ./build/${{ inputs.export-type }}/${{ inputs.export-name }}
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: ${{ inputs.export-type }}
+        path: build/${{ inputs.export-type }}
