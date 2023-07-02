@@ -24,11 +24,14 @@ runs:
         mkdir -v -p ~/.local/share/godot/templates
         mv /root/.local/share/godot/templates/${{ inputs.godot-version }}.stable ~/.local/share/godot/templates/${{ inputs.godot-version }}.stable
         ln -s ~/.local/share/godot/templates ~/.local/share/godot/export_templates
+        
+        mkdir -v -p ~/.config/
+        mv /root/.config/godot/ ~/.config/
     - name: Build
       shell: bash
       run: |
         mkdir -v -p build/${{ inputs.export-type }}
-        godot --headless -v --export-release "${{ inputs.export-type }}" ./build/${{ inputs.export-type }}/${{ inputs.export-name }}
+        godot --headless -v --export-debug "${{ inputs.export-type }}" ./build/${{ inputs.export-type }}/${{ inputs.export-name }}
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
