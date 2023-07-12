@@ -13,8 +13,25 @@ env:
   GODOT_VERSION: 4.0.3
 
 jobs:
+  export-android-debug:
+    name: Android Debug Export
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.0.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Export Android Debug
+        uses: ./.github/actions/export-project
+        with:
+          godot-version: ${{ env.GODOT_VERSION }}
+          export-type: 'android_debug'
+          export-name: 'test-debug.apk'
   export-web:
     name: Web Export
+    needs: export-android-debug
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.0.3
@@ -46,4 +63,4 @@ jobs:
           godot-version: ${{ env.GODOT_VERSION }}
           export-type: 'windows'
           export-name: 'ASlimeInTheDark.exe'
-
+  
