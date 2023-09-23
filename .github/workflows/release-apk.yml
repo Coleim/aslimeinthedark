@@ -1,0 +1,140 @@
+name: Release APK
+
+on:
+  push:
+    branches:
+      - 'releases'
+env:
+  GODOT_VERSION: 4.0.3
+
+jobs:
+  # get the version from presets
+  check-version:
+    name: Check version
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.0.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+        with:
+          lfs: true
+      - name: Get version
+        shell: bash
+        run: |
+          git config --global --add safe.directory /__w/aslimeinthedark/aslimeinthedark
+          echo "VERSION_CODE=$(grep "version/code" export_presets.cfg | cut -d'=' -f2)" >> $GITHUB_ENV
+          echo "VERSION_NAME=$(grep "version/name" export_presets.cfg | cut -d'=' -f2)" >> $GITHUB_ENV
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: 0 # Optional fallback tag to use when no tag can be found
+      - name: Compare version with tags
+        if: ${{ fromJSON(steps.previoustag.outputs.tag) >= fromJSON(env.VERSION_CODE) }}
+        run: |
+            echo "::error title=Mauvaise version::La version ${{ env.VERSION_CODE }} est inférieure ou égale au tag ${{ steps.previoustag.outputs.tag }}"
+            exit 1
+    outputs:
+      VERSION_CODE: ${{ env.VERSION_CODE }}
+      VERSION_NAME: ${{ env.VERSION_NAME }}
+  export-android-release:
+    needs: check-version
+    name: Android Release Export
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.0.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+        with:
+          lfs: true
+      - name: Get version
+        shell: bash
+        run: |
+          git config --global --add safe.directory /__w/aslimeinthedark/aslimeinthedark
+          echo "VERSION_CODE=$(grep "version/code" export_presets.cfg | cut -d'=' -f2)" >> $GITHUB_OUTPUT
+          echo "VERSION_NAME=$(grep "version/name" export_presets.cfg | cut -d'=' -f2)" >> $GITHUB_OUTPUT
+      - name: Export Android Release
+        uses: ./.github/actions/export-project
+        with:
+          godot-version: ${{ env.GODOT_VERSION }}
+          export-type: 'android'
+          export-name: "A_Slime_In_The_Dark_${{ needs.check-version.outputs.VERSION_CODE }}_${{ needs.check-version.outputs.VERSION_NAME }}.apk"
+          release: true
+          SECRET_RELEASE_KEYSTORE_BASE64: ${{ secrets.SECRET_RELEASE_KEYSTORE_BASE64 }}
+          SECRET_RELEASE_KEYSTORE_USER: ${{ secrets.SECRET_RELEASE_KEYSTORE_USER }}
+          SECRET_RELEASE_KEYSTORE_PASSWORD: ${{ secrets.SECRET_RELEASE_KEYSTORE_PASSWORD }}
+      - name: Deploy Itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: android
+          ITCH_GAME: a-slime-in-the-dark
+          ITCH_USER: katsuo-bushi-studio
+          PACKAGE: build/android
+  export-web:
+    name: Web Export
+    needs: check-version
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.0.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+        with:
+          lfs: true
+      - name: Export Web
+        uses: ./.github/actions/export-project
+        with:
+          godot-version: ${{ env.GODOT_VERSION }}
+          export-type: 'web'
+          export-name: 'index.html'
+      - name: Deploy Itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: web
+          ITCH_GAME: a-slime-in-the-dark
+          ITCH_USER: katsuo-bushi-studio
+          PACKAGE: build/web
+  export-windows:
+    name: Windows Export
+    needs: check-version
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.0.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+        with:
+          lfs: true
+      - name: Export Windows
+        uses: ./.github/actions/export-project
+        with:
+          godot-version: ${{ env.GODOT_VERSION }}
+          export-type: 'windows'
+          export-name: 'ASlimeInTheDark.exe'
+      - name: Deploy Itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: windows
+          ITCH_GAME: a-slime-in-the-dark
+          ITCH_USER: katsuo-bushi-studio
+          PACKAGE: build/windows
+  export-tags:
+    needs: [export-android-release, check-version]
+    name: Export tags
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+        with:
+          lfs: true
+      - name: Push Git Tag
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git tag ${{ needs.check-version.outputs.VERSION_CODE }}
+          git push origin ${{ needs.check-version.outputs.VERSION_CODE }}
