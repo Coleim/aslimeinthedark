@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://c43j3m647nbel"]
+
+[ext_resource type="Texture2D" uid="uid://bfac1wllyelu7" path="res://assets/images/Title.png" id="1_3rg42"]
+[ext_resource type="Script" path="res://scenes/menu/main_screen.gd" id="1_rsks2"]
+[ext_resource type="AudioStream" uid="uid://jlkktanmhvnp" path="res://assets/audio/OGG Dystopian by Tim Beek/Surveillance.ogg" id="3_35rwo"]
+[ext_resource type="FontFile" uid="uid://dtawjt8k8ebw2" path="res://assets/fonts/XTypewriter-Regular.ttf" id="3_turgf"]
+[ext_resource type="Texture2D" uid="uid://8b1w41jsttv0" path="res://assets/images/round_light.png" id="5_k1nyd"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yeb47"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_70uun"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b2h7n"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_rsks2")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Background" type="ColorRect" parent="MarginContainer2"]
+material = SubResource("CanvasItemMaterial_yeb47")
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_right = 150
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_3rg42")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Start_button" type="Button" parent="MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_turgf")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_70uun")
+text = "Commencer"
+flat = true
+
+[node name="Exit_button" type="Button" parent="MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_turgf")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b2h7n")
+text = "Quitter"
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_35rwo")
+autoplay = true
+mix_target = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 2.0
+offset_top = 234.0
+offset_right = 1152.0
+offset_bottom = 350.0
+texture = ExtResource("5_k1nyd")

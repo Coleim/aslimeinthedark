@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d2c1hnskpnxr5"
+path="res://.godot/imported/Mystery Unsolved.ogg-713c9aef0ad90b4997755b291583ceb5.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/OGG Dystopian by Tim Beek/Mystery Unsolved.ogg"
+dest_files=["res://.godot/imported/Mystery Unsolved.ogg-713c9aef0ad90b4997755b291583ceb5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

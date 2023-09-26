@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dx530mipc0mq7"
+path="res://.godot/imported/Dystopian.ogg-a8c208df5070780227c6d8bdf64297b8.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/OGG Dystopian by Tim Beek/Dystopian.ogg"
+dest_files=["res://.godot/imported/Dystopian.ogg-a8c208df5070780227c6d8bdf64297b8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

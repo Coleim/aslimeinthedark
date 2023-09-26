@@ -32,6 +32,7 @@ jobs:
           godot-version: ${{ env.GODOT_VERSION }}
           export-type: 'android'
           export-name: 'test-debug.apk'
+          release: false
   export-web:
     name: Web Export
     needs: export-android-debug
@@ -49,6 +50,7 @@ jobs:
           godot-version: ${{ env.GODOT_VERSION }}
           export-type: 'web'
           export-name: 'index.html'
+          release: false
   export-windows:
     name: Windows Export
     needs: export-web
@@ -66,4 +68,5 @@ jobs:
           godot-version: ${{ env.GODOT_VERSION }}
           export-type: 'windows'
           export-name: 'ASlimeInTheDark.exe'
+          release: false
   
