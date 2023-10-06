@@ -1,11 +1,28 @@
 extends Node2D
 
+const main_screen = preload("res://scenes/menu/main_screen.tscn")
 
-# Called when the node enters the scene tree for the first time.
+func setupMainScreen():
+	var main_screen_instance = main_screen.instantiate()
+	main_screen_instance.connect("startGame", _startGame)
+	$Menu.add_child(main_screen_instance)
+	
+	
 func _ready():
-	get_tree().change_scene_to_file("res://scenes/menu/main_screen.tscn")
+	setupMainScreen()
+	
+func _startGame():
+	for n in $Menu.get_children():
+		$Menu.remove_child(n)
+		n.queue_free()
+	var level = $LevelOrchestrator.getFirstScene()
+	level.connect("ended", _on_scene_ends)
+	$Level.add_child(level)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_scene_ends():
+	for n in $Level.get_children():
+		$Level.remove_child(n)
+		n.queue_free()
+	var level = $LevelOrchestrator.getNextScene()
+	level.connect("ended", _on_scene_ends)
+	$Level.add_child(level)

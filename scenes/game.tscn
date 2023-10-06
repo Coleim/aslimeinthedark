@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://icsglybhh80h"]
+[gd_scene load_steps=3 format=3 uid="uid://icsglybhh80h"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_bb1nh"]
+[ext_resource type="Script" path="res://scenes/game/LevelOrchestrator.gd" id="2_cwq5l"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bb1nh")
+
+[node name="LevelOrchestrator" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_cwq5l")
+
+[node name="Menu" type="Node2D" parent="."]
+
+[node name="Level" type="Node2D" parent="."]

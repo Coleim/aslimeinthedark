@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2eu1sug3hhbe"]
+
+[ext_resource type="Script" path="res://scenes/game/levels/animations/002_rainy_town.gd" id="1_s88jb"]
+[ext_resource type="Texture2D" uid="uid://dojjin072bu4m" path="res://assets/images/skyscraper.png" id="2_ekeqe"]
+[ext_resource type="Script" path="res://scenes/game/levels/animations/Camera2D.gd" id="3_m44qo"]
+[ext_resource type="Shader" path="res://assets/images/rain_and_snow_shader.gdshader" id="4_il1cj"]
+[ext_resource type="AudioStream" uid="uid://cmxhb7b085se" path="res://assets/audio/Rainfall Sound Effect.wav" id="5_dsonn"]
+[ext_resource type="AudioStream" uid="uid://xgs0fj50couc" path="res://assets/audio/thunder/Lightning Storm Sound Effect.ogg" id="6_fq8a4"]
+[ext_resource type="AudioStream" uid="uid://bt67orxst1j4t" path="res://assets/audio/thunder/storm lightning and thunder sound effect.ogg" id="7_nb8c0"]
+[ext_resource type="AudioStream" uid="uid://5pq7a50dux22" path="res://assets/audio/thunder/Thunder sound effect.ogg" id="8_l24ek"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1cili"]
+shader = ExtResource("4_il1cj")
+shader_parameter/rain_amount = 200.0
+shader_parameter/near_rain_length = 0.083
+shader_parameter/far_rain_length = 0.1
+shader_parameter/near_rain_width = 0.141
+shader_parameter/far_rain_width = 0.429
+shader_parameter/near_rain_transparency = 0.783
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/base_rain_speed = 0.5
+shader_parameter/additional_rain_speed = 0.5
+shader_parameter/slant = 0.2
+
+[node name="002_rainy_town" type="Node2D"]
+script = ExtResource("1_s88jb")
+
+[node name="City01" type="Sprite2D" parent="."]
+position = Vector2(567, -109)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ekeqe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("3_m44qo")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -64.0
+offset_top = -900.0
+offset_right = 1203.0
+offset_bottom = 683.0
+color = Color(0.231373, 0.231373, 0.231373, 0.427451)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.384314, 0.384314, 0.384314, 1)
+
+[node name="Rain" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_1cili")
+offset_left = -5.0
+offset_top = -1031.0
+offset_right = 1186.0
+offset_bottom = 609.0
+color = Color(0, 0.294118, 1, 0)
+
+[node name="RainSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dsonn")
+autoplay = true
+mix_target = 1
+
+[node name="ThunderTimer" type="Timer" parent="."]
+
+[node name="FlashTimer" type="Timer" parent="."]
+
+[node name="HideFlashTimer" type="Timer" parent="."]
+
+[node name="ThunderSoundEffect_01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fq8a4")
+
+[node name="ThunderSoundEffect_02" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_nb8c0")
+
+[node name="ThunderSoundEffect_03" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_l24ek")
