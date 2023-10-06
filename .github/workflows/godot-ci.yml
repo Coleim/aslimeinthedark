@@ -33,9 +33,6 @@ jobs:
           export-type: 'android'
           export-name: 'test-debug.apk'
           release: false
-          SECRET_RELEASE_KEYSTORE_BASE64: ${{ secrets.SECRET_RELEASE_KEYSTORE_BASE64 }}
-          SECRET_RELEASE_KEYSTORE_USER: ${{ secrets.SECRET_RELEASE_KEYSTORE_USER }}
-          SECRET_RELEASE_KEYSTORE_PASSWORD: ${{ secrets.SECRET_RELEASE_KEYSTORE_PASSWORD }}
   export-web:
     name: Web Export
     needs: export-android-debug

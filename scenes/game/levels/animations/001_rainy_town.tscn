@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://5pq7a50dux22" path="res://assets/audio/thunder/Thunder sound effect.ogg" id="9_x84ld"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1cili"]
+resource_local_to_scene = true
 shader = ExtResource("3_vsvk0")
 shader_parameter/rain_amount = 200.0
 shader_parameter/near_rain_length = 0.083

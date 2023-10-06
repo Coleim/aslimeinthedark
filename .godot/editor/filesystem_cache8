@@ -1,0 +1,69 @@
+bdbec74c6e5bd72edee867077d70896c
+::res://::1696625067
+export_presets.cfg::TextFile::-1::1696623643::0::1::::<><>::
+README.md::TextFile::-1::1687375727::0::1::::<><>::
+::res://assets/::1696624031
+icon.svg::CompressedTexture2D::6619946566142848469::1687375193::1696624031::1::::<><>::
+::res://assets/audio/::1696624031
+Rainfall Sound Effect.wav::AudioStreamWAV::166559313753012632::1696254567::1696624031::1::::<><>::
+::res://assets/audio/OGG Dystopian by Tim Beek/::1696624030
+Dark Atmosphere to Synth.ogg::AudioStreamOggVorbis::1440271487111033093::1587964702::1696624030::1::::<><>::
+Dystopian.ogg::AudioStreamOggVorbis::8837282151344762808::1587964686::1696624030::1::::<><>::
+Empty Streets.ogg::AudioStreamOggVorbis::2427227717626221020::1587964674::1696624030::1::::<><>::
+License.txt::TextFile::-1::1588662690::0::1::::<><>::
+Mystery Unsolved.ogg::AudioStreamOggVorbis::9060081438268528212::1587964662::1696624030::1::::<><>::
+Surveillance.ogg::AudioStreamOggVorbis::655033774454311733::1587964643::1696624030::1::::<><>::
+The Nightclub.ogg::AudioStreamOggVorbis::1699457916873341726::1587964630::1696624030::1::::<><>::
+The Protagonist.ogg::AudioStreamOggVorbis::6359121893943128326::1587964619::1696624030::1::::<><>::
+The Story Continues.ogg::AudioStreamOggVorbis::7494350466914040108::1587964609::1696624030::1::::<><>::
+::res://assets/audio/thunder/::1696624030
+Lightning Storm Sound Effect.ogg::AudioStreamOggVorbis::1627867498833079298::1696600793::1696624030::1::::<><>::
+storm lightning and thunder sound effect.ogg::AudioStreamOggVorbis::3785973297346480145::1696600699::1696624030::1::::<><>::
+Thunder sound effect.ogg::AudioStreamOggVorbis::2137659640225928957::1696237750::1696624030::1::::<><>::
+::res://assets/fonts/::1696624030
+XTypewriter-Bold.ttf::FontFile::1229799086289960001::1695732186::1696624030::1::::<><>::
+XTypewriter-Regular.ttf::FontFile::8494202975608735675::1695732186::1696624030::1::::<><>::
+::res://assets/images/::1696624031
+City01.png::CompressedTexture2D::6288306084695491098::1695997157::1696624030::1::::<><>::
+City02.png::CompressedTexture2D::2934832208524093619::1696022526::1696624030::1::::<><>::
+rain_and_snow_shader.gdshader::Shader::-1::1696604091::0::1::::<><>::
+round_light.png::CompressedTexture2D::2319915710862775559::1656792690::1696624030::1::::<><>::
+skyscraper.png::CompressedTexture2D::8161046723998172206::1696613694::1696624030::1::::<><>::
+Title.png::CompressedTexture2D::2737533939548907316::1695735332::1696624031::1::::<><>::
+::res://assets/sprites/::1695736262
+::res://assets/sprites/slime/::1696624031
+slime_die.png::CompressedTexture2D::1100918691197652298::1631920688::1696624030::1::::<><>::
+slime_hit.png::CompressedTexture2D::3134578606194775252::1631920658::1696624030::1::::<><>::
+slime_idle1.png::CompressedTexture2D::1816233809010925971::1631920594::1696624030::1::::<><>::
+slime_idle2.png::CompressedTexture2D::4688744156721997099::1631920626::1696624030::1::::<><>::
+slime_idle3.png::CompressedTexture2D::5538805784555227908::1631920638::1696624030::1::::<><>::
+slime_jump.png::CompressedTexture2D::8283471075346895741::1631920718::1696624030::1::::<><>::
+slime_move.png::CompressedTexture2D::7386357679735169284::1631920700::1696624030::1::::<><>::
+slime_swallow.png::CompressedTexture2D::5497424252017030506::1631920756::1696624030::1::::<><>::
+::res://assets/translations/::1696624013
+translation.csv::Translation::8322785382775022585::1695842544::1696624013::1::::<><>::
+translation.en.translation::OptimizedTranslation::892785299036461343::1696624013::0::1::::<><>::
+translation.fr.translation::OptimizedTranslation::3296662353214247453::1696624013::0::1::::<><>::
+::res://build/::1695558778
+::res://build/android/::1696623305
+::res://build/web/::1696624031
+index.apple-touch-icon.png::CompressedTexture2D::769524362989211637::1695412923::1696624030::1::::<><>::
+index.icon.png::CompressedTexture2D::8621572347633857688::1695412923::1696624030::1::::<><>::
+index.png::CompressedTexture2D::836377481579920997::1695412923::1696624030::1::::<><>::
+::res://build/windows/::1696623642
+::res://global/::1687375326
+::res://scenes/::1696622572
+game.gd::GDScript::-1::1696621971::0::1::::<>Node2D<>::
+game.tscn::PackedScene::566743740132865829::1696622572::0::1::::<><>::res://scenes/game.gd<>res://scenes/game/LevelOrchestrator.gd
+::res://scenes/game/::1696622290
+LevelOrchestrator.gd::GDScript::-1::1696622290::0::1::::<>Node2D<>::
+::res://scenes/game/levels/::1696015396
+::res://scenes/game/levels/animations/::1696622572
+001_rainy_town.gd::GDScript::-1::1696621873::0::1::::<>Node2D<>::
+001_rainy_town.tscn::PackedScene::9024458190381536705::1696622572::0::1::::<><>::res://scenes/game/levels/animations/001_rainy_town.gd<>uid://bh2wi05iqhvix<>res://scenes/game/levels/animations/Camera2D.gd<>res://assets/images/rain_and_snow_shader.gdshader<>uid://cmxhb7b085se<>uid://xgs0fj50couc<>uid://bt67orxst1j4t<>uid://5pq7a50dux22
+002_rainy_town.gd::GDScript::-1::1696622378::0::1::::<>Node2D<>::
+002_rainy_town.tscn::PackedScene::9063880087445977338::1696621873::0::1::::<><>::res://scenes/game/levels/animations/002_rainy_town.gd<>uid://dojjin072bu4m<>res://scenes/game/levels/animations/Camera2D.gd<>res://assets/images/rain_and_snow_shader.gdshader<>uid://cmxhb7b085se<>uid://xgs0fj50couc<>uid://bt67orxst1j4t<>uid://5pq7a50dux22
+Camera2D.gd::GDScript::-1::1696021861::0::1::::<>Camera2D<>::
+::res://scenes/menu/::1696603808
+main_screen.gd::GDScript::-1::1696603808::0::1::::<>Node2D<>::
+main_screen.tscn::PackedScene::6866717544697091167::1696602053::0::1::::<><>::uid://bfac1wllyelu7<>res://scenes/menu/main_screen.gd<>uid://jlkktanmhvnp<>uid://dtawjt8k8ebw2<>uid://8b1w41jsttv0
