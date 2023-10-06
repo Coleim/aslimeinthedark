@@ -19,7 +19,7 @@ func _ready():
 	camera.position_smoothing_speed = 0.1
 	camera.limit_left = 0
 	$FlashTimer.connect("timeout", _playFlash)
-	$FlashTimer.set_wait_time(0)
+	$FlashTimer.set_wait_time(0.1)
 	$FlashTimer.start()
 	$HideFlashTimer.connect("timeout", _hideFlash)
 	$HideFlashTimer.set_wait_time(0.2)
@@ -30,6 +30,18 @@ func _ready():
 	velocity.x -= 1
 	velocity = velocity * 50
 	camera.position += velocity
+	
+	$Rain.material.set_shader_parameter("rain_amount", 500)
+	$Rain.material.set_shader_parameter("near_rain_length", 0.083)
+	$Rain.material.set_shader_parameter("far_rain_length", 0.1)
+	$Rain.material.set_shader_parameter("near_rain_width", 0.141)
+	$Rain.material.set_shader_parameter("far_rain_width", 0.429)
+	$Rain.material.set_shader_parameter("near_rain_transparency", 0.783)
+	$Rain.material.set_shader_parameter("far_rain_transparency", 0.5)
+	$Rain.material.set_shader_parameter("rain_color", Color("#cccccc"))
+	$Rain.material.set_shader_parameter("base_rain_speed", 0.5)
+	$Rain.material.set_shader_parameter("additional_rain_speed", 0.5)
+	$Rain.material.set_shader_parameter("hint_range", 0.2)
 
 func _process(delta):
 	var camera = $Camera2D
