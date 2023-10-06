@@ -12,7 +12,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b2h7n"]
 
-[node name="Node2D" type="Node2D"]
+[node name="MainScreen" type="Node2D"]
 script = ExtResource("1_rsks2")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
@@ -56,15 +56,16 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_turgf")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_70uun")
-text = "Commencer"
+text = "START"
 flat = true
+language = "fr"
 
 [node name="Exit_button" type="Button" parent="MarginContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_turgf")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b2h7n")
-text = "Quitter"
+text = "QUIT"
 flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -73,8 +74,11 @@ autoplay = true
 mix_target = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 2.0
-offset_top = 234.0
-offset_right = 1152.0
-offset_bottom = 350.0
+modulate = Color(0, 1, 0, 0.388235)
+offset_left = 5.0
+offset_top = 175.0
+offset_right = 1155.0
+offset_bottom = 423.0
 texture = ExtResource("5_k1nyd")
+
+[node name="GlowTimer" type="Timer" parent="."]

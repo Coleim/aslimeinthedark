@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://xgs0fj50couc"
+path="res://.godot/imported/Lightning Storm Sound Effect.ogg-570cf8198d343604b404f490f8327e51.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/thunder/Lightning Storm Sound Effect.ogg"
+dest_files=["res://.godot/imported/Lightning Storm Sound Effect.ogg-570cf8198d343604b404f490f8327e51.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
