@@ -35,7 +35,6 @@ jobs:
           release: false
   export-web:
     name: Web Export
-    needs: export-android-debug
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.0.3
@@ -53,7 +52,6 @@ jobs:
           release: false
   export-windows:
     name: Windows Export
-    needs: export-web
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.0.3
