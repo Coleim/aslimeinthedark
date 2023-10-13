@@ -11,9 +11,21 @@ config_version=5
 [application]
 
 config/name="A Slime In The Dark"
+config/name_localized={
+"en": ""
+}
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://assets/icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/translations/translation.en.translation", "res://assets/translations/translation.fr.translation")
+locale/fallback="fr"
 
 [rendering]
 

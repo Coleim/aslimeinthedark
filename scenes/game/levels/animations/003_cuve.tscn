@@ -1,0 +1,275 @@
+[gd_scene load_steps=39 format=3 uid="uid://b00yqsjmsjyh4"]
+
+[ext_resource type="Texture2D" uid="uid://c26qq2x3l1kb5" path="res://assets/images/Cuve.png" id="1_3cekg"]
+[ext_resource type="Script" path="res://scenes/game/levels/animations/003_cuve.gd" id="1_8fyfo"]
+[ext_resource type="Texture2D" uid="uid://bfbdim0ig1ett" path="res://assets/sprites/bip_lumineux.png" id="2_c6h8a"]
+[ext_resource type="Texture2D" uid="uid://loydp02nc8m1" path="res://assets/images/Cuve_broken.png" id="3_aqxlc"]
+[ext_resource type="Texture2D" uid="uid://c0snxwtechr25" path="res://assets/lights/cuve_lighting.png" id="4_hdlr8"]
+[ext_resource type="Texture2D" uid="uid://cug714xyoibol" path="res://assets/lights/cuve_lighting_extended.png" id="5_onme8"]
+[ext_resource type="AudioStream" uid="uid://xgs0fj50couc" path="res://assets/audio/thunder/Lightning Storm Sound Effect.ogg" id="6_0ap7w"]
+[ext_resource type="AudioStream" uid="uid://bt67orxst1j4t" path="res://assets/audio/thunder/storm lightning and thunder sound effect.ogg" id="6_am306"]
+[ext_resource type="AudioStream" uid="uid://5pq7a50dux22" path="res://assets/audio/thunder/Thunder sound effect.ogg" id="8_td86a"]
+[ext_resource type="AudioStream" uid="uid://y7xv1i4cx5uj" path="res://assets/audio/Breaking_Glass_Sound_Effect.ogg" id="9_x4438"]
+[ext_resource type="Texture2D" uid="uid://618ime6jimlh" path="res://assets/sprites/lightning/Lightning_cycle1.png" id="10_usag8"]
+[ext_resource type="Texture2D" uid="uid://scl6uheuh3or" path="res://assets/sprites/lightning/Lightning_cycle2.png" id="11_dgp3f"]
+[ext_resource type="Texture2D" uid="uid://0wgvy8v756hj" path="res://assets/sprites/lightning/Lightning_cycle3.png" id="12_qimvt"]
+[ext_resource type="Texture2D" uid="uid://clnatrjkag8i2" path="res://assets/sprites/lightning/Lightning_cycle4.png" id="13_crvfb"]
+[ext_resource type="Texture2D" uid="uid://d2rqnw4oysrly" path="res://assets/sprites/lightning/Lightning_cycle5.png" id="14_2witm"]
+[ext_resource type="Texture2D" uid="uid://b0uhh24lhfrpv" path="res://assets/sprites/lightning/Lightning_cycle6.png" id="15_q8oy2"]
+[ext_resource type="Texture2D" uid="uid://dv8uwkycwcn2r" path="res://assets/sprites/gaz_explode/Retro Impact Effect Pack 2 D.png" id="16_273ms"]
+[ext_resource type="Texture2D" uid="uid://bdcrhpxwyrl6d" path="res://assets/sprites/gaz_explode/Explosion_gas1.png" id="17_kkjbl"]
+[ext_resource type="Texture2D" uid="uid://bv3ju1bllfcse" path="res://assets/sprites/gaz_explode/Explosion_gas2.png" id="18_143kj"]
+[ext_resource type="Texture2D" uid="uid://dtiu8dg4b6bkl" path="res://assets/sprites/gaz_explode/Explosion_gas3.png" id="19_jdbt8"]
+[ext_resource type="Texture2D" uid="uid://c8tvhi1d1ireb" path="res://assets/sprites/gaz_explode/Explosion_gas4.png" id="20_lqavb"]
+[ext_resource type="Texture2D" uid="uid://4vami1260iu0" path="res://assets/sprites/gaz_explode/Explosion_gas5.png" id="21_6mi3d"]
+[ext_resource type="Texture2D" uid="uid://8od7gpygehle" path="res://assets/sprites/gaz_explode/Explosion_gas6.png" id="22_b3l6c"]
+[ext_resource type="Texture2D" uid="uid://bu7w2ns6k75rd" path="res://assets/sprites/gaz_explode/Explosion_gas7.png" id="23_h2xao"]
+[ext_resource type="Texture2D" uid="uid://dxb4l7fxdl0w6" path="res://assets/sprites/gaz_explode/Explosion_gas8.png" id="24_j45qu"]
+[ext_resource type="Texture2D" uid="uid://bvhra0hsycbuu" path="res://assets/sprites/gaz_explode/Explosion_gas9.png" id="25_6ihic"]
+[ext_resource type="Texture2D" uid="uid://ct38yhjpjhym7" path="res://assets/sprites/gaz_explode/Explosion_gas10.png" id="26_oqco7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8kxn"]
+atlas = ExtResource("2_c6h8a")
+region = Rect2(0, 0, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfwcl"]
+atlas = ExtResource("2_c6h8a")
+region = Rect2(20, 0, 20, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_paboa"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_e8kxn")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_rfwcl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dpqwb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_usag8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dgp3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qimvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_crvfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2witm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_q8oy2")
+}],
+"loop": true,
+"name": &"lightning",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0336"]
+atlas = ExtResource("16_273ms")
+region = Rect2(0, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7glv"]
+atlas = ExtResource("16_273ms")
+region = Rect2(64, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwyk2"]
+atlas = ExtResource("16_273ms")
+region = Rect2(128, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rxp0"]
+atlas = ExtResource("16_273ms")
+region = Rect2(192, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odjsf"]
+atlas = ExtResource("16_273ms")
+region = Rect2(256, 820, 64, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qvx2p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0336")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7glv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwyk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rxp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odjsf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ypn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_kkjbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_143kj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jdbt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_lqavb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_6mi3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_b3l6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_h2xao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_j45qu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_6ihic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_oqco7")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}]
+
+[node name="003_cuve" type="Node2D"]
+script = ExtResource("1_8fyfo")
+
+[node name="cuve_background" type="Sprite2D" parent="."]
+position = Vector2(678, 319)
+scale = Vector2(1.99, 1.99)
+texture = ExtResource("1_3cekg")
+
+[node name="cuve_broken" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(678, 319)
+scale = Vector2(1.99, 1.99)
+texture = ExtResource("3_aqxlc")
+
+[node name="BipAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(597, 130)
+scale = Vector2(1.9, 1.94737)
+sprite_frames = SubResource("SpriteFrames_paboa")
+animation = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-230, 323)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.380392, 0.380392, 0.380392, 0.886275)
+
+[node name="CuveLight" type="PointLight2D" parent="."]
+position = Vector2(593.5, 315)
+scale = Vector2(1.93421, 1.96319)
+blend_mode = 2
+texture = ExtResource("4_hdlr8")
+
+[node name="CuveLightExtended" type="PointLight2D" parent="."]
+position = Vector2(593.5, 315)
+scale = Vector2(1.93421, 1.96319)
+blend_mode = 2
+texture = ExtResource("5_onme8")
+
+[node name="ThunderSoundEffect_01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0ap7w")
+
+[node name="ThunderSoundEffect_02" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_am306")
+
+[node name="ThunderSoundEffect_03" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_td86a")
+
+[node name="BreakingGlassSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_x4438")
+
+[node name="EnergyAnimation01" type="AnimatedSprite2D" parent="."]
+position = Vector2(510.965, 77.5178)
+rotation = -0.395126
+scale = Vector2(1.46652, 0.359165)
+sprite_frames = SubResource("SpriteFrames_dpqwb")
+animation = &"lightning"
+frame_progress = 0.0212781
+
+[node name="EnergyAnimation02" type="AnimatedSprite2D" parent="."]
+position = Vector2(534.768, 76.0632)
+rotation = -0.566462
+scale = Vector2(1.46652, 0.363249)
+sprite_frames = SubResource("SpriteFrames_dpqwb")
+animation = &"lightning"
+frame = 5
+frame_progress = 0.264043
+
+[node name="EnergyAnimation03" type="AnimatedSprite2D" parent="."]
+position = Vector2(566.21, 77.1189)
+rotation = -0.489958
+scale = Vector2(1.47058, 0.358042)
+sprite_frames = SubResource("SpriteFrames_dpqwb")
+animation = &"lightning"
+frame = 5
+frame_progress = 0.264043
+
+[node name="EnergyAnimation04" type="AnimatedSprite2D" parent="."]
+position = Vector2(622.904, 74.8305)
+rotation = 0.394687
+scale = Vector2(1.46652, 0.36268)
+sprite_frames = SubResource("SpriteFrames_dpqwb")
+animation = &"lightning"
+frame_progress = 0.0212781
+
+[node name="EnergyAnimation05" type="AnimatedSprite2D" parent="."]
+position = Vector2(654.158, 76.7197)
+rotation = 0.58182
+scale = Vector2(1.46652, 0.346348)
+sprite_frames = SubResource("SpriteFrames_dpqwb")
+animation = &"lightning"
+frame = 5
+frame_progress = 0.264043
+
+[node name="ExplodeAnimation01" type="AnimatedSprite2D" parent="."]
+position = Vector2(600, 316.5)
+scale = Vector2(3.6875, 6.23438)
+sprite_frames = SubResource("SpriteFrames_qvx2p")
+frame = 4
+frame_progress = 1.0
+speed_scale = 0.6
+
+[node name="ExplodeAnimation02" type="AnimatedSprite2D" parent="."]
+position = Vector2(594, 485)
+scale = Vector2(1.956, 1.956)
+sprite_frames = SubResource("SpriteFrames_8ypn2")
+animation = &"explode"
+
+[node name="ExplodeAnimation03" type="AnimatedSprite2D" parent="."]
+position = Vector2(608, 225)
+rotation = -3.13899
+scale = Vector2(1.956, 1.956)
+sprite_frames = SubResource("SpriteFrames_8ypn2")
+animation = &"explode"

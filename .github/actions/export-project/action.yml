@@ -36,37 +36,25 @@ runs:
         mv /root/.config/godot/ ~/.config/
     - name: Build Debug
       shell: bash
-      if: ${{ inputs.release == false }}
+      if: ${{ inputs.release == 'false' }}
       run: |
         mkdir -v -p build/${{ inputs.export-type }}
-        godot --headless -v --export-debug "${{ inputs.export-type }}" ./build/${{ inputs.export-type }}/${{ inputs.export-name }}
+        godot --headless --editor --quit
+        godot --headless -v --path . --export-debug "${{ inputs.export-type }}" ./build/${{ inputs.export-type }}/${{ inputs.export-name }}
     - name: Build Release
       shell: bash
       env:
         SECRET_RELEASE_KEYSTORE_BASE64: ${{ inputs.SECRET_RELEASE_KEYSTORE_BASE64 }}
         SECRET_RELEASE_KEYSTORE_USER: ${{ inputs.SECRET_RELEASE_KEYSTORE_USER }}
         SECRET_RELEASE_KEYSTORE_PASSWORD: ${{ inputs.SECRET_RELEASE_KEYSTORE_PASSWORD }}
-      if: |
-        ${{ inputs.release == true }} &&
-        $SECRET_RELEASE_KEYSTORE_BASE64 &&
-        $SECRET_RELEASE_KEYSTORE_USER &&
-        $SECRET_RELEASE_KEYSTORE_PASSWORD
+      if: ${{ inputs.release == 'true' }}
       run: |
-        ls -al /root
         echo $SECRET_RELEASE_KEYSTORE_BASE64 | base64 --decode > /root/release.keystore
-        ls -al /root
-        cat /root/release.keystore
-        echo $SECRET_RELEASE_KEYSTORE_USER
-        echo $SECRET_RELEASE_KEYSTORE_PASSWORD
         mkdir -v -p build/${{ inputs.export-type }}
-        ls -al .
         sed 's@keystore/release=".*"@keystore/release="'/root/release.keystore'"@g' -i export_presets.cfg
         sed 's@keystore/release_user=".*"@keystore/release_user="'$SECRET_RELEASE_KEYSTORE_USER'"@g' -i export_presets.cfg
         sed 's@keystore/release_password=".*"@keystore/release_password="'$SECRET_RELEASE_KEYSTORE_PASSWORD'"@g' -i export_presets.cfg
-        ls -al .
-        cat export_presets.cfg
         godot --headless -v --export-release "${{ inputs.export-type }}" ./build/${{ inputs.export-type }}/${{ inputs.export-name }}
-        
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
