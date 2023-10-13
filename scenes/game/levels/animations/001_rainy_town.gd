@@ -1,6 +1,6 @@
 extends Node2D
 
-signal ended
+signal scened_ended
 
 var decay = 0.8  # How quickly the shaking stops [0, 1].
 var max_offset = Vector2(100, 75)  # Maximum hor/ver shake in pixels.
@@ -58,7 +58,7 @@ func _hideFlash():
 	
 func _playFlash():
 	if count > 3:
-		ended.emit()
+		scened_ended.emit()
 	else:
 		$CanvasModulate.hide()
 		$FlashTimer.stop()

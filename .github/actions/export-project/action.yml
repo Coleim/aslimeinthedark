@@ -38,16 +38,8 @@ runs:
       shell: bash
       if: ${{ inputs.release == 'false' }}
       run: |
-        echo "DEBUG BUILD"
         mkdir -v -p build/${{ inputs.export-type }}
-
-        
         godot --headless --editor --quit
-        
-        ls -al
-        ls -al /usr/local/bin/
-        ls -al .godot
-        ls -al .godot/imported
         godot --headless -v --path . --export-debug "${{ inputs.export-type }}" ./build/${{ inputs.export-type }}/${{ inputs.export-name }}
     - name: Build Release
       shell: bash
@@ -57,8 +49,6 @@ runs:
         SECRET_RELEASE_KEYSTORE_PASSWORD: ${{ inputs.SECRET_RELEASE_KEYSTORE_PASSWORD }}
       if: ${{ inputs.release == 'true' }}
       run: |
-        echo "RELEASE BUILD"
-        echo ${{ inputs.release }}
         echo $SECRET_RELEASE_KEYSTORE_BASE64 | base64 --decode > /root/release.keystore
         mkdir -v -p build/${{ inputs.export-type }}
         sed 's@keystore/release=".*"@keystore/release="'/root/release.keystore'"@g' -i export_presets.cfg

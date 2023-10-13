@@ -15,8 +15,8 @@ func _startGame():
 	for n in $Menu.get_children():
 		$Menu.remove_child(n)
 		n.queue_free()
-	var level = $LevelOrchestrator.getFirstScene()
-	level.connect("ended", _on_scene_ends)
+	var level = $LevelOrchestrator.getCurrentScene()
+	level.connect("scened_ended", _on_scene_ends)
 	$Level.add_child(level)
 
 func _on_scene_ends():
@@ -24,5 +24,5 @@ func _on_scene_ends():
 		$Level.remove_child(n)
 		n.queue_free()
 	var level = $LevelOrchestrator.getNextScene()
-	level.connect("ended", _on_scene_ends)
+	level.connect("scened_ended", _on_scene_ends)
 	$Level.add_child(level)

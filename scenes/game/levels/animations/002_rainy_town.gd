@@ -1,6 +1,6 @@
 extends Node2D
 
-signal ended
+signal scened_ended
 
 var decay = 0.8  # How quickly the shaking stops [0, 1].
 var max_offset = Vector2(100, 75)  # Maximum hor/ver shake in pixels.
@@ -19,7 +19,7 @@ func _ready():
 	camera.position_smoothing_speed = 0.5
 	camera.limit_top = -600
 	$FlashTimer.connect("timeout", _playFlash)
-	$FlashTimer.set_wait_time(5)
+	$FlashTimer.set_wait_time(1)
 	$FlashTimer.start()
 	$HideFlashTimer.connect("timeout", _hideFlash)
 	$HideFlashTimer.set_wait_time(0.2)
@@ -58,8 +58,7 @@ func _hideFlash():
 	
 func _playFlash():
 	if count > 2:
-		# ended.emit()
-		get_tree().quit()
+		scened_ended.emit()
 	else:
 		$CanvasModulate.hide()
 		$FlashTimer.stop()
