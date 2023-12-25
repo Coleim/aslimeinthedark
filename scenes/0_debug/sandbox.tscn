@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://j0q5kki8xrih"]
+
+[ext_resource type="Texture2D" uid="uid://loydp02nc8m1" path="res://assets/images/Cuve_broken.png" id="1_42ia0"]
+[ext_resource type="Script" path="res://scenes/0_debug/sandbox.gd" id="1_e6qsl"]
+[ext_resource type="PackedScene" uid="uid://csehucrahncf5" path="res://scenes/game/characters/player.tscn" id="1_ypghu"]
+[ext_resource type="Script" path="res://scenes/game/PlayerFollowCamera.gd" id="3_irb8t"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iaxae"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kg06"]
+texture = ExtResource("1_42ia0")
+texture_region_size = Vector2i(54, 22)
+13:14/next_alternative_id = 4
+13:14/0 = 0
+13:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+13:14/0/physics_layer_0/angular_velocity = 0.0
+13:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(27, 11, -27, 11, -27, -11, 27, -11)
+13:14/1 = 1
+13:14/1/material = SubResource("CanvasItemMaterial_iaxae")
+13:14/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+13:14/1/physics_layer_0/angular_velocity = 0.0
+13:14/1/physics_layer_0/polygon_0/points = PackedVector2Array(-27, -11, 27, -11, 27, 11, -27, 11)
+
+[sub_resource type="TileSet" id="TileSet_ekiim"]
+tile_size = Vector2i(54, 22)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_8kg06")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_srnk1"]
+blend_mode = 1
+
+[node name="sandbox" type="Node2D"]
+script = ExtResource("1_e6qsl")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(556, 317)
+scale = Vector2(2, 2)
+texture = ExtResource("1_42ia0")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-4, -4)
+color = Color(0.407843, 0.407843, 0.407843, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-18, -14)
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_ekiim")
+format = 2
+layer_0/name = "test"
+layer_0/tile_data = PackedInt32Array(917521, 851969, 14, 917520, 851969, 14, 917522, 851969, 14, 983032, 851969, 14, 983033, 851969, 14, 983034, 851969, 14, 983035, 851969, 14, 983036, 851969, 14, 983037, 851969, 14, 983038, 851969, 14, 983039, 851969, 14, 917504, 851969, 14, 917505, 851969, 14, 917506, 851969, 14, 917507, 851969, 14, 917509, 851969, 14, 917510, 851969, 14, 917511, 851969, 14, 917512, 851969, 14, 917513, 851969, 14, 917514, 851969, 14, 917515, 851969, 14, 917516, 851969, 14, 917517, 851969, 14, 917518, 851969, 14, 917519, 851969, 14, 917508, 851969, 14)
+
+[node name="Player" parent="." instance=ExtResource("1_ypghu")]
+material = SubResource("CanvasItemMaterial_srnk1")
+position = Vector2(475, 527)
+
+[node name="PlayerFollowCamera" type="Camera2D" parent="."]
+visible = false
+position = Vector2(578, 330)
+script = ExtResource("3_irb8t")
