@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b00yqsjmsjyh4"]
+[gd_scene load_steps=40 format=3 uid="uid://b00yqsjmsjyh4"]
 
 [ext_resource type="Texture2D" uid="uid://c26qq2x3l1kb5" path="res://assets/images/Cuve.png" id="1_3cekg"]
 [ext_resource type="Script" path="res://scenes/game/levels/animations/003_cuve.gd" id="1_8fyfo"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://y7xv1i4cx5uj" path="res://assets/audio/Breaking_Glass_Sound_Effect.ogg" id="9_x4438"]
 [ext_resource type="Texture2D" uid="uid://618ime6jimlh" path="res://assets/sprites/lightning/Lightning_cycle1.png" id="10_usag8"]
 [ext_resource type="Texture2D" uid="uid://scl6uheuh3or" path="res://assets/sprites/lightning/Lightning_cycle2.png" id="11_dgp3f"]
+[ext_resource type="AudioStream" uid="uid://cfdoq6hqxvfwv" path="res://assets/audio/Electricity spark sound effects HQ.mp3" id="11_dpwmh"]
 [ext_resource type="Texture2D" uid="uid://0wgvy8v756hj" path="res://assets/sprites/lightning/Lightning_cycle3.png" id="12_qimvt"]
 [ext_resource type="Texture2D" uid="uid://clnatrjkag8i2" path="res://assets/sprites/lightning/Lightning_cycle4.png" id="13_crvfb"]
 [ext_resource type="Texture2D" uid="uid://d2rqnw4oysrly" path="res://assets/sprites/lightning/Lightning_cycle5.png" id="14_2witm"]
@@ -210,6 +211,9 @@ stream = ExtResource("8_td86a")
 [node name="BreakingGlassSoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_x4438")
 
+[node name="ElectricSoundEffect01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_dpwmh")
+
 [node name="EnergyAnimation01" type="AnimatedSprite2D" parent="."]
 position = Vector2(510.965, 77.5178)
 rotation = -0.395126
@@ -273,3 +277,5 @@ rotation = -3.13899
 scale = Vector2(1.956, 1.956)
 sprite_frames = SubResource("SpriteFrames_8ypn2")
 animation = &"explode"
+
+[node name="FlashTimer" type="Timer" parent="."]
