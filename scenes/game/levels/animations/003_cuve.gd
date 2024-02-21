@@ -15,6 +15,7 @@ func _ready():
 	velocity = velocity
 	camera.position += velocity
 	playThunder01()
+	$ElectricSoundEffect01.play()
 	$ExplodeAnimation01.hide()
 	$ExplodeAnimation02.hide()
 	$ExplodeAnimation03.hide()
@@ -70,6 +71,8 @@ func playThunder02():
 	$CuveLight.energy = 15
 	$CuveLightExtended.energy = 15
 	$cuve_broken.show()
+	$FlashTimer.start(1)
+	await $FlashTimer.timeout
 	$CuveLight.hide()
 	$CuveLightExtended.hide()
 	$EnergyAnimation01.hide()
@@ -77,6 +80,7 @@ func playThunder02():
 	$EnergyAnimation03.hide()
 	$EnergyAnimation04.hide()
 	$EnergyAnimation05.hide()
+	$ElectricSoundEffect01.stop()
 	
 	#await $ExplodeAnimation01.animation_finished
 	await $ThunderSoundEffect_02.finished
