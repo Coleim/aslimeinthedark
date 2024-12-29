@@ -70,6 +70,7 @@ flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_35rwo")
+volume_db = -20.0
 autoplay = true
 mix_target = 1
 

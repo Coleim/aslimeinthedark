@@ -70,9 +70,12 @@ func playThunder02():
 	#$BreakingGlassSoundEffect.connect("finished", endScene)
 	$CuveLight.energy = 15
 	$CuveLightExtended.energy = 15
-	$cuve_broken.show()
+	$Cuve.hide()
+	$Cuve_Broken_01.show()
 	$FlashTimer.start(1)
 	await $FlashTimer.timeout
+	$Cuve_Broken_02.show()
+	$Slime.show()
 	$CuveLight.hide()
 	$CuveLightExtended.hide()
 	$EnergyAnimation01.hide()
@@ -84,8 +87,7 @@ func playThunder02():
 	
 	#await $ExplodeAnimation01.animation_finished
 	await $ThunderSoundEffect_02.finished
-	$cuve_background.hide()
-	get_tree().quit()
+	scened_ended.emit()
 
 func endScene():
 	$ExplodeAnimation01.stop()
