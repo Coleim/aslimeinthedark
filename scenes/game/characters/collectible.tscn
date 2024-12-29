@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4l5fvx4ijt7b"]
+
+[ext_resource type="Texture2D" uid="uid://cmoqlp7dxloch" path="res://_art_resources/slime_tileset_01.png" id="1_de2xg"]
+[ext_resource type="Script" path="res://scenes/game/characters/collectible.gd" id="1_ug846"]
+[ext_resource type="Texture2D" uid="uid://br4q8nril7ctr" path="res://assets/lights/slime_lighting.png" id="2_gg8md"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4242"]
+size = Vector2(60, 61)
+
+[node name="Collectible" type="StaticBody2D"]
+position = Vector2(450, 266)
+script = ExtResource("1_ug846")
+metadata/type = "collectible"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_de2xg")
+region_enabled = true
+region_rect = Rect2(22.3792, 106.128, 63.1995, 64.671)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_g4242")
+
+[node name="Light" type="PointLight2D" parent="."]
+position = Vector2(-0.500004, -1.5)
+scale = Vector2(4.15, 4.52941)
+energy = 0.19
+texture = ExtResource("2_gg8md")

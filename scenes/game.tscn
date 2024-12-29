@@ -13,3 +13,5 @@ script = ExtResource("2_cwq5l")
 [node name="Menu" type="Node2D" parent="."]
 
 [node name="Level" type="Node2D" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]

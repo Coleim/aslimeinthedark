@@ -1,6 +1,5 @@
 extends Camera2D
 
-
 @export var player_position: Vector2
 @export var level_limit_left = 0
 @export var level_limit_right = 0
