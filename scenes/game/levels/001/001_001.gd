@@ -2,24 +2,31 @@ extends Node2D
 
 signal scened_ended
 signal start_music
+signal stop_music
 
-@onready var camera: Camera2D = $PlayerFollowCamera
-var level_limit_left = -240
-var level_limit_right = 1472
+@onready var player_start_position: Vector2 = $player_start.position 
+
+const disket_total = 1
+const tiles_total = 31
+
+var limit_left = -240
+var limit_right = 1472
 
 func _ready():
+	player_start_position = $player_start.position 
+	$Exit.connect("body_entered", _on_exit_reached)
+	$Exit/CollisionShape2D.disabled = false
 	$IntroMusic.play()
 	$IntroMusic.connect("finished", _on_intro_finished)
-	$Player.follow_camera = camera
-	$Player.viewport_size = get_viewport_rect().size
-	camera.player_position = $Player.position
-	camera.level_limit_left = level_limit_left
-	camera.level_limit_right = level_limit_right
-
-func _process(delta):
-	camera.player_position = $Player.position
-	$Player.viewport_size = get_viewport_rect().size
 
 func _on_intro_finished():
 	start_music.emit()
-	
+
+
+func _on_exit_reached(body):
+	if body.name == 'Player':
+		$Exit.disconnect("body_entered", _on_exit_reached)
+		$CanvasModulate.color = "5b5b5b"
+		$IntroMusic.stop()
+		scened_ended.emit()
+		

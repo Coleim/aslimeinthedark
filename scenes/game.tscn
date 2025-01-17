@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://icsglybhh80h"]
+[gd_scene load_steps=10 format=3 uid="uid://icsglybhh80h"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_bb1nh"]
 [ext_resource type="Script" path="res://scenes/game/LevelOrchestrator.gd" id="2_cwq5l"]
+[ext_resource type="PackedScene" uid="uid://bgmvtbewkmv4x" path="res://scenes/menu/HUD.tscn" id="3_ns4ww"]
+[ext_resource type="PackedScene" uid="uid://csehucrahncf5" path="res://scenes/game/characters/player.tscn" id="4_sddxt"]
+[ext_resource type="Script" path="res://scenes/game/PlayerFollowCamera.gd" id="5_b70ec"]
+[ext_resource type="AudioStream" uid="uid://crk6nf342p7vr" path="res://assets/audio/pickup_item.mp3" id="6_5a1hb"]
+[ext_resource type="PackedScene" uid="uid://b4rp6pxc4q1id" path="res://scenes/menu/score_screen.tscn" id="7_ap0iu"]
+[ext_resource type="AudioStream" uid="uid://bjyb6wikcksg3" path="res://assets/audio/city-lights-and-solitude-283489.mp3" id="8_lrkos"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o0jih"]
+blend_mode = 1
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bb1nh")
@@ -14,4 +23,39 @@ script = ExtResource("2_cwq5l")
 
 [node name="Level" type="Node2D" parent="."]
 
+[node name="PlayerFollowCamera" type="Camera2D" parent="."]
+position = Vector2(576, 325)
+process_callback = 0
+position_smoothing_speed = 15.0
+script = ExtResource("5_b70ec")
+
+[node name="HUD" parent="PlayerFollowCamera" instance=ExtResource("3_ns4ww")]
+visible = false
+material = SubResource("CanvasItemMaterial_o0jih")
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -578.0
+offset_top = -330.0
+offset_right = -578.0
+offset_bottom = -330.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Player" parent="." instance=ExtResource("4_sddxt")]
+visible = false
+position = Vector2(568, 622)
+
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="PickupItemSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5a1hb")
+
+[node name="DripsContainer" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="ScoreScreen" parent="." instance=ExtResource("7_ap0iu")]
+visible = false
+
+[node name="EndLevelMusic" type="AudioStreamPlayer" parent="ScoreScreen"]
+stream = ExtResource("8_lrkos")

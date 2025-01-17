@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal object_collected
+
 @export var level_limit_left = 0
 
 @export var run_speed: int = 250
@@ -10,16 +12,19 @@ extends CharacterBody2D
 @export var follow_camera: Camera2D
 
 @export var collected_objects: int = 0
+@export var playing = false
 
 @onready var Tdrips =  get_node("Drips")
 
+var previousCollision
+var infectedTiles = {}
 
-func set_run_speed(nu):
-	print("set_run_speed")
-	pass
+
+func reset():
+	previousCollision = null
+	infectedTiles = {}
 
 func _ready():
-	print("Player READY")
 	pass
 
 func get_input():
@@ -36,10 +41,10 @@ func play_animations():
 	else:
 		$AnimatedSprite2D.play("static")
 		
-var previousCollision
-var infectedTiles = {}
 
 func _physics_process(delta):
+	if !playing:
+		return 
 	get_input()
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -55,9 +60,9 @@ func _physics_process(delta):
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider() is StaticBody2D and collision.get_collider().get_meta("type") == "collectible":
-			print(delta, " - collision with collectible ")
 			collected_objects = collected_objects + 1
 			collision.get_collider().queue_free()
+			object_collected.emit(collected_objects)
 		if is_on_floor() and collision.get_collider() is TileMap and collision.get_normal() == Vector2(0, -1):
 			var tilemap = collision.get_collider() as TileMap
 			var tile_pos = tilemap.local_to_map(tilemap.to_local (position) )
@@ -72,6 +77,6 @@ func _physics_process(delta):
 					var frame_count = drip.sprite_frames.get_frame_count(drip.animation)
 					drip.frame = randi_range(0, frame_count)
 					drip.show()
-					get_parent().add_child(drip)
+					get_parent().get_node("DripsContainer").add_child(drip)
 					infectedTiles[tile_pos] = "ON"
 
