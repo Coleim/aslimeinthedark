@@ -2,6 +2,7 @@ extends Node2D
 
 signal restart
 signal next
+signal totalScoreSignal
 
 var disket_count: float = 0
 var disket_total: float = 0
@@ -33,6 +34,7 @@ func compute_score():
 	var time_penalty = time * 10
 
 	var total_score = round(exploration_score + collection_score - time_penalty)
+	totalScoreSignal.emit(total_score)
 	$TotalScore.text = "%04d" % total_score if total_score > 0 else "%04d" % 0
 
 	

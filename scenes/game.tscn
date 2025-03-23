@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://icsglybhh80h"]
+[gd_scene load_steps=14 format=3 uid="uid://icsglybhh80h"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_bb1nh"]
 [ext_resource type="Script" path="res://scenes/game/LevelOrchestrator.gd" id="2_cwq5l"]
@@ -7,7 +7,11 @@
 [ext_resource type="Script" path="res://scenes/game/PlayerFollowCamera.gd" id="5_b70ec"]
 [ext_resource type="AudioStream" uid="uid://crk6nf342p7vr" path="res://assets/audio/pickup_item.mp3" id="6_5a1hb"]
 [ext_resource type="PackedScene" uid="uid://b4rp6pxc4q1id" path="res://scenes/menu/score_screen.tscn" id="7_ap0iu"]
+[ext_resource type="AudioStream" uid="uid://b371tgsdjb3im" path="res://assets/audio/pick_up_power.mp3" id="8_ef3up"]
 [ext_resource type="AudioStream" uid="uid://bjyb6wikcksg3" path="res://assets/audio/city-lights-and-solitude-283489.mp3" id="8_lrkos"]
+[ext_resource type="AudioStream" uid="uid://dte4rvngkirjh" path="res://assets/audio/new_level.mp3" id="8_skt84"]
+[ext_resource type="FontFile" uid="uid://rryu1vtgpt82" path="res://assets/fonts/XTypewriter-Bold.ttf" id="9_nu5qj"]
+[ext_resource type="Script" path="res://scenes/GameState.gd" id="12_rfll1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o0jih"]
 blend_mode = 1
@@ -42,6 +46,28 @@ offset_bottom = -330.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="PowerText" type="RichTextLabel" parent="PlayerFollowCamera"]
+visible = false
+modulate = Color(0.803922, 0.941176, 0.737255, 1)
+offset_left = -235.0
+offset_top = -187.0
+offset_right = 314.0
+offset_bottom = -49.0
+theme_override_fonts/normal_font = ExtResource("9_nu5qj")
+theme_override_font_sizes/normal_font_size = 50
+text = "YOU_CAN_JUMP"
+
+[node name="LevelText" type="RichTextLabel" parent="PlayerFollowCamera"]
+visible = false
+offset_left = -274.0
+offset_top = -231.0
+offset_right = 326.0
+offset_bottom = -84.0
+theme_override_colors/default_color = Color(0.827451, 1, 0.807843, 0.745098)
+theme_override_fonts/normal_font = ExtResource("9_nu5qj")
+theme_override_font_sizes/normal_font_size = 100
+text = "INCUBATOR"
+
 [node name="Player" parent="." instance=ExtResource("4_sddxt")]
 visible = false
 position = Vector2(568, 622)
@@ -51,6 +77,12 @@ position = Vector2(568, 622)
 [node name="PickupItemSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_5a1hb")
 
+[node name="PickupPowerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ef3up")
+
+[node name="NewLevelSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_skt84")
+
 [node name="DripsContainer" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -59,3 +91,6 @@ visible = false
 
 [node name="EndLevelMusic" type="AudioStreamPlayer" parent="ScoreScreen"]
 stream = ExtResource("8_lrkos")
+
+[node name="GameState" type="Node2D" parent="."]
+script = ExtResource("12_rfll1")

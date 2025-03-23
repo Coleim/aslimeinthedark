@@ -4,6 +4,7 @@ const _001_rainy_town = preload("res://scenes/game/levels/animations/001_rainy_t
 const _002_rainy_town = preload("res://scenes/game/levels/animations/002_rainy_town.tscn")
 const _003_cuve = preload("res://scenes/game/levels/animations/003_cuve.tscn")
 const _001_001 = preload("res://scenes/game/levels/001/001_001.tscn")
+const _001_002 = preload("res://scenes/game/levels/001/001_002.tscn")
 const _001_001_music = preload("res://assets/audio/001_001_loop.mp3")
 
 var current_level_index = 0;
@@ -14,6 +15,7 @@ const level_list = [
 	[ _002_rainy_town, null ],
 	[ _003_cuve, null ],
 	[ _001_001, _001_001_music ],
+	[ _001_002, null ],
 ]
 
 func getCurrentScene():
@@ -22,7 +24,6 @@ func getCurrentScene():
 	return level_list[current_level_index][0].instantiate()
 
 func playMusic(audio_player: AudioStreamPlayer):
-	print( " playMusic ? ")
 	current_audio_player = audio_player
 	if current_level_index > level_list.size():
 		current_level_index = 0
@@ -32,7 +33,6 @@ func playMusic(audio_player: AudioStreamPlayer):
 		current_audio_player.connect("finished", _on_music_finished)
 
 func _on_music_finished():
-	print( " restart ? ")
 	if current_audio_player:
 		current_audio_player.play()
 	#current_audio_player.connect("finished", _on_music_finished)

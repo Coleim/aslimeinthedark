@@ -2,7 +2,7 @@ extends Node2D
 
 const main_screen = preload("res://scenes/menu/main_screen.tscn")
 
-const start_level_at = 3
+const start_level_at = 4
 
 @onready var camera: Camera2D = $PlayerFollowCamera
 var camera_start_position: Vector2 
@@ -21,12 +21,20 @@ func _ready():
 	$ScoreScreen.connect("next", _next_level)
 	$ScoreScreen.connect("restart", _restart_level)
 	$Player.connect("object_collected", _on_object_collected)
+	$Player.connect("poweritem_collected", _on_poweritem_collected)
+	$ScoreScreen.connect("totalScoreSignal", _on_total_score_change)
+	# $GameState.init(start_level_at)
 
 func _process(_delta):
 	if $Player.playing:
 		camera.player_position = $Player.position
 		$Player.viewport_size = get_viewport_rect().size
 
+func _on_total_score_change(score):
+	#$GameState.set_score(score)
+	pass
+	
+	
 func _startGame():
 	$ScoreScreen.hide()
 	for n in $Menu.get_children():
@@ -34,6 +42,7 @@ func _startGame():
 		n.queue_free()
 	$LevelOrchestrator.current_level_index = start_level_at
 	create_level($LevelOrchestrator.getCurrentScene())
+	#print( "$Player.position 01 : " , $Player.position)
 
 
 func _cleanup_level():
@@ -47,6 +56,7 @@ func _cleanup_level():
 		$DripsContainer.remove_child(n)
 		n.queue_free()
 	$Player.position = camera_start_position
+	#print(">>> Cleanup")
 	camera.position = camera_start_position
 	# Change level
 	for n in $Level.get_children():
@@ -56,7 +66,7 @@ func _cleanup_level():
 func _restart_level():
 	$Player.position = Vector2(0,0)
 	_cleanup_level()
-	print( " clean up done ")
+	#print( " clean up done ")
 	create_level($LevelOrchestrator.getCurrentScene())
 
 func _next_level():
@@ -88,24 +98,31 @@ func _on_scene_ends():
 		$ScoreScreen/EndLevelMusic.play()
 
 func create_level(level):
+	print(">>> create_level ")
 	current_level = level
+	level.connect("show_level_text", _on_show_level_text)
 	$Level.add_child(level)
 	$Player.position = level.player_start_position
+	
+	#print( "$Player.position c : " , level.player_start_position)
+	#print( "$Player.position d: " , $Player.position)
 	
 	level.connect("scened_ended", _on_scene_ends)
 	level.connect("start_music", _on_start_music)
 	level.connect("stop_music", _on_stop_music)
 	
-	$Player.follow_camera = camera
 	$Player.viewport_size = get_viewport_rect().size
 	camera.player_position = $Player.position
 	camera.level_limit_left = level.limit_left
 	camera.level_limit_right = level.limit_right
+	$Player.follow_camera = camera
+	$PlayerFollowCamera.position.x = $Player.position.x
 	
 	$Player.show()
 	$PlayerFollowCamera/HUD.show()
 	$Player.playing = true
 	time_start = Time.get_ticks_msec()
+	
 
 func _on_start_music():
 	$LevelOrchestrator.playMusic($MusicPlayer)
@@ -117,6 +134,44 @@ func _on_object_collected(disket_count):
 	$PickupItemSound.play()
 	$PlayerFollowCamera/HUD.disket_count = disket_count
 
+func _on_poweritem_collected(type):
+	var label = $PlayerFollowCamera/PowerText
+	if type == 'jump':
+		label.text = "Vous pouvez sauter"
+	$PickupPowerSound.play()
+	label.modulate.a = 0.0
+	label.show()
+	var tween = create_tween()
+	# Fade in
+	tween.tween_property(label, "modulate:a", 1.0, 0.5)
+	await tween.finished
+
+	# Wait before fading out
+	await get_tree().create_timer(1.5).timeout
+
+	# Fade out
+	tween = create_tween() 
+	tween.tween_property(label, "modulate:a", 0.0, 0.3)
+	await tween.finished
+
+
+func _on_show_level_text(level):
+	$NewLevelSound.play()
+	var tween = create_tween()
+	# Fade in
+	var label = $PlayerFollowCamera/LevelText
+	label.modulate.a = 0.0
+	label.show()
+	label.text = level
+	tween.tween_property(label, "modulate:a", 1.0, 1.0)
+	await tween.finished  # Wait for the tween to finish
+
+	# Wait before fading out
+	await get_tree().create_timer(2.0).timeout
+	# Fade out
+	tween = create_tween()  # Create a new tween
+	tween.tween_property(label, "modulate:a", 0.0, 1.0)  # Over 1 second
+	await tween.finished
 func end_game():
 	print("END OF THE GAME")
 	setupMainScreen()
