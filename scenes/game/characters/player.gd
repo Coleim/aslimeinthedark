@@ -89,26 +89,36 @@ func _physics_process(delta):
 		position.x = clamp(position.x, camera_rect.position.x + 55, camera_rect.size.x+camera_rect.position.x - 55)
 	#print( "Position 002 : " , position)
 	
+	var processed_colliders = []
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		#print( "collision : " , collision.get_collider())
-		if collision.get_collider() is StaticBody2D :
-			if collision.get_collider().get_meta("type") == "collectible":
+		var collider = collision.get_collider()
+		if collider in processed_colliders:
+			continue
+		if collider is StaticBody2D:
+			print( " collider : " ,  collider )
+			if collider.get_meta("type") == "collectible":
+				processed_colliders.append(collider)
+				print( "collected_objects: " , collected_objects)
 				collected_objects = collected_objects + 1
-				collision.get_collider().queue_free()
+				collider.queue_free()
 				object_collected.emit(collected_objects)
-			if collision.get_collider().get_meta("type") == "power_item":
-				var power_item_type = collision.get_collider().get_meta("power_item")
+			if collider.get_meta("type") == "power_item":
+				processed_colliders.append(collider)
+				var power_item_type = collider.get_meta("power_item")
 				if power_item_type == "jump":
 					can_jump = true
 				poweritem_collected.emit(power_item_type)
-				collision.get_collider().queue_free()
+				collider.queue_free()
 		
-		if is_on_floor() and collision.get_collider() is TileMap and collision.get_normal() == Vector2(0, -1):
-			var tilemap = collision.get_collider() as TileMap
+		if is_on_floor() and collider is TileMap and collision.get_normal() == Vector2(0, -1):
+			var tilemap = collider as TileMap
 			var tile_pos = tilemap.local_to_map(tilemap.to_local (position) )
-			var tile_id = tilemap.get_cell_source_id(0, tile_pos)
-			if tile_id != -1 and tile_pos != previousCollision:
+			var tile_id = tilemap.get_cell_source_id(0, tile_pos)			
+			var tile_data = tilemap.get_cell_tile_data(0, tile_pos)
+			var collision_shape_count = tile_data.get_collision_polygons_count(0)				
+			if collision_shape_count > 0 and tile_id != -1 and tile_pos != previousCollision:
+				processed_colliders.append(collider)
 				previousCollision = tile_pos
 				if !infectedTiles.has(tile_pos):
 					#var tile_center_pos = tilemap.to_global(tilemap.map_to_local(tile_pos)) + Vector2(10, 32)
