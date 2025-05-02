@@ -22,10 +22,14 @@ signal poweritem_collected
 
 var previousCollision
 var infectedTiles = {}
-var can_jump = false
+#var can_jump = false
+var can_jump = true
 var heading_right = true
 
 func reset():
+	# can_jump = false # TODO Change depending on the game state
+	collected_objects = 0
+	heading_right = true
 	previousCollision = null
 	infectedTiles = {}
 

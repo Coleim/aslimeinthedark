@@ -9,9 +9,9 @@ var can_jump = false
 
 
 
-func set_score(score):
+func set_score(_score):
 	var level = {}
-	level.score = score
+	level.score = _score
 	levels_state.push(level)
 	print("level: " , level)
 	print("level.score: " , level.score)

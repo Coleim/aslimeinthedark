@@ -2,7 +2,7 @@ extends Node2D
 
 const main_screen = preload("res://scenes/menu/main_screen.tscn")
 
-const start_level_at = 4
+const start_level_at = 5
 
 @onready var camera: Camera2D = $PlayerFollowCamera
 var camera_start_position: Vector2 
@@ -30,7 +30,7 @@ func _process(_delta):
 		camera.player_position = $Player.position
 		$Player.viewport_size = get_viewport_rect().size
 
-func _on_total_score_change(score):
+func _on_total_score_change(_score):
 	#$GameState.set_score(score)
 	pass
 	

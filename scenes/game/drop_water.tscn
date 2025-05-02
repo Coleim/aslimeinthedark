@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh2piwo0daqek"]
+
+[ext_resource type="Script" path="res://scenes/game/levels/001/DropBody.gd" id="1_7f7mt"]
+[ext_resource type="Texture2D" uid="uid://bi2vprs6uy2ip" path="res://_art_resources/level01_tileset.png" id="2_hy8ml"]
+[ext_resource type="Texture2D" uid="uid://c0snxwtechr25" path="res://assets/lights/cuve_lighting.png" id="3_i04hp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bq7hw"]
+size = Vector2(6, 12)
+
+[node name="DropBody" type="RigidBody2D"]
+position = Vector2(-553, 418)
+disable_mode = 2
+script = ExtResource("1_7f7mt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bq7hw")
+metadata/_edit_lock_ = true
+
+[node name="Drop" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("2_hy8ml")
+region_enabled = true
+region_rect = Rect2(36.2038, 743.971, 5.6079, 11.8915)
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="CollisionShape2D/Drop"]
+position = Vector2(-1.12057e-05, 1.96695e-06)
+scale = Vector2(0.0789477, 0.0736196)
+texture = ExtResource("3_i04hp")
+metadata/_edit_lock_ = true

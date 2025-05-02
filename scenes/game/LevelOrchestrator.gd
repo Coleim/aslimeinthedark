@@ -6,6 +6,7 @@ const _003_cuve = preload("res://scenes/game/levels/animations/003_cuve.tscn")
 const _001_001 = preload("res://scenes/game/levels/001/001_001.tscn")
 const _001_002 = preload("res://scenes/game/levels/001/001_002.tscn")
 const _001_001_music = preload("res://assets/audio/001_001_loop.mp3")
+const _001_003 = preload("res://scenes/game/levels/001/001_003.tscn")
 
 var current_level_index = 0;
 var current_audio_player: AudioStreamPlayer
@@ -16,6 +17,7 @@ const level_list = [
 	[ _003_cuve, null ],
 	[ _001_001, _001_001_music ],
 	[ _001_002, null ],
+	[ _001_003, null ],
 ]
 
 func getCurrentScene():
