@@ -2,7 +2,6 @@ extends Node2D
 
 signal scened_ended
 signal start_music
-signal stop_music
 signal show_level_text
 
 @onready var player_start_position: Vector2 = $player_start.position 

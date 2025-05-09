@@ -2,7 +2,7 @@ extends Node2D
 
 const main_screen = preload("res://scenes/menu/main_screen.tscn")
 
-const start_level_at = 5
+const start_level_at = 0
 
 @onready var camera: Camera2D = $PlayerFollowCamera
 var camera_start_position: Vector2 
@@ -18,6 +18,7 @@ func setupMainScreen():
 
 func _ready():
 	setupMainScreen()
+	$PlayerFollowCamera.set_enabled(false)
 	$ScoreScreen.connect("next", _next_level)
 	$ScoreScreen.connect("restart", _restart_level)
 	$Player.connect("object_collected", _on_object_collected)
@@ -93,42 +94,51 @@ func _on_scene_ends():
 		
 		$ScoreScreen.position = camera.position
 		$Player.position = Vector2(0,0)
-		
-		_on_stop_music()
+	
+		$MusicPlayer.set_volume_db(-100)
 		$ScoreScreen/EndLevelMusic.play()
+	else:
+		_next_level()
 
 func create_level(level):
-	print(">>> create_level ")
 	current_level = level
 	level.connect("show_level_text", _on_show_level_text)
-	$Level.add_child(level)
-	$Player.position = level.player_start_position
-	
-	#print( "$Player.position c : " , level.player_start_position)
-	#print( "$Player.position d: " , $Player.position)
-	
 	level.connect("scened_ended", _on_scene_ends)
 	level.connect("start_music", _on_start_music)
-	level.connect("stop_music", _on_stop_music)
+	$Level.add_child(level)
 	
-	$Player.viewport_size = get_viewport_rect().size
-	camera.player_position = $Player.position
-	camera.level_limit_left = level.limit_left
-	camera.level_limit_right = level.limit_right
-	$Player.follow_camera = camera
-	$PlayerFollowCamera.position.x = $Player.position.x
-	
-	$Player.show()
-	$PlayerFollowCamera/HUD.show()
-	$Player.playing = true
-	time_start = Time.get_ticks_msec()
+	if "player_start_position" in level:
+		var tween = create_tween()
+		tween.tween_property($MusicPlayer, "volume_db", 0.0, 0.5)  # 0 dB is full volume
+		$PlayerFollowCamera.set_enabled(true)
+		$PlayerFollowCamera.make_current()
+		$Player.position = level.player_start_position
+		
+		$Player.viewport_size = get_viewport_rect().size
+		camera.player_position = $Player.position
+		camera.level_limit_left = level.limit_left
+		camera.level_limit_right = level.limit_right
+		if "limit_bottom" in level:
+			camera.level_limit_bottom = level.limit_bottom
+		else: 
+			camera.level_limit_bottom = 0
+		if "limit_top" in level:
+			camera.level_limit_top = level.limit_top
+		else: 
+			camera.level_limit_top = 0
+			
+		
+		$Player.follow_camera = camera
+		$PlayerFollowCamera.position.x = $Player.position.x
+		
+		$Player.show()
+		$PlayerFollowCamera/HUD.show()
+		$Player.playing = true
+		time_start = Time.get_ticks_msec()
 	
 
 func _on_start_music():
 	$LevelOrchestrator.playMusic($MusicPlayer)
-
-func _on_stop_music():
-	$MusicPlayer.stop()
 
 func _on_object_collected(disket_count):
 	$PickupItemSound.play()
@@ -172,6 +182,7 @@ func _on_show_level_text(level):
 	tween = create_tween()  # Create a new tween
 	tween.tween_property(label, "modulate:a", 0.0, 1.0)  # Over 1 second
 	await tween.finished
+
 func end_game():
 	print("END OF THE GAME")
 	setupMainScreen()

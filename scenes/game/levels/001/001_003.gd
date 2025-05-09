@@ -2,7 +2,6 @@ extends Node2D
 
 signal scened_ended
 signal start_music
-signal stop_music
 
 @onready var player_start_position: Vector2 = $player_start.position 
 
@@ -16,7 +15,6 @@ var max_spawn_interval = 1.0
 var spawn_interval = randf_range(0, max_spawn_interval)
 
 const drips_scene = preload("res://scenes/game/drop_water.tscn")
-
 
 var base_text = tr("AI_001")
 

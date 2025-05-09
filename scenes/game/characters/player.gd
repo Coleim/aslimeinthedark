@@ -22,8 +22,8 @@ signal poweritem_collected
 
 var previousCollision
 var infectedTiles = {}
-#var can_jump = false
-var can_jump = true
+var can_jump = false
+#var can_jump = true
 var heading_right = true
 
 func reset():

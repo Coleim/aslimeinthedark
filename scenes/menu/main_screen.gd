@@ -2,7 +2,7 @@ extends Node2D
 
 signal startGame
 
-var lightGlowValue = 0.7
+var lightGlowValue = 0
 var glowingDown = true
 
 func _ready():
@@ -11,19 +11,19 @@ func _ready():
 	exitBtn.connect("pressed", _on_exit_pressed)
 	startBtn.connect("pressed", _on_start_pressed)
 	$GlowTimer.start(0.1)
-	$TextureRect.modulate = Color(0, 1, 0, lightGlowValue)
+	$Glow.modulate = Color(0, 1, 0, lightGlowValue)
 	$GlowTimer.connect("timeout", _on_timer_end)
 	
 	
 func _on_timer_end():
 	if glowingDown:
-		lightGlowValue -= 0.01
+		lightGlowValue -= 0.005
 	else:
-		lightGlowValue += 0.01
-	$TextureRect.modulate = Color(0, 1, 0, lightGlowValue)
-	if lightGlowValue < 0.3:
+		lightGlowValue += 0.005
+	$Glow.modulate = Color(0, 1, 0, lightGlowValue)
+	if lightGlowValue <= 0:
 		glowingDown = false;
-	if lightGlowValue > 0.6:
+	if lightGlowValue >= 0.1:
 		glowingDown = true;
 
 func _on_exit_pressed():

@@ -31,8 +31,10 @@ script = ExtResource("1_d052p")
 position = Vector2(933, 176)
 scale = Vector2(2, 2)
 texture = ExtResource("2_76j0a")
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(1284, 328)
 script = ExtResource("3_rbwri")
 
@@ -41,9 +43,11 @@ offset_top = -2.0
 offset_right = 1876.0
 offset_bottom = 808.0
 color = Color(0.368627, 0.368627, 0.368627, 0.34902)
+metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.384314, 0.384314, 0.384314, 1)
+metadata/_edit_lock_ = true
 
 [node name="Rain" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_1cili")
@@ -52,6 +56,7 @@ offset_top = -378.0
 offset_right = 1868.0
 offset_bottom = 609.0
 color = Color(0, 0.294118, 1, 0)
+metadata/_edit_lock_ = true
 
 [node name="RainSoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_exbdy")

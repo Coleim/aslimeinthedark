@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bfac1wllyelu7" path="res://assets/images/Title.png" id="1_3rg42"]
 [ext_resource type="Script" path="res://scenes/menu/main_screen.gd" id="1_rsks2"]
-[ext_resource type="AudioStream" uid="uid://jlkktanmhvnp" path="res://assets/audio/OGG Dystopian by Tim Beek/Surveillance.ogg" id="3_35rwo"]
 [ext_resource type="FontFile" uid="uid://dtawjt8k8ebw2" path="res://assets/fonts/XTypewriter-Regular.ttf" id="3_turgf"]
+[ext_resource type="AudioStream" uid="uid://8dqwibfhkp7g" path="res://assets/audio/MainMenu_2.mp3" id="4_ixdxq"]
 [ext_resource type="Texture2D" uid="uid://8b1w41jsttv0" path="res://assets/images/round_light.png" id="5_k1nyd"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yeb47"]
@@ -69,17 +69,18 @@ text = "QUIT"
 flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_35rwo")
+stream = ExtResource("4_ixdxq")
 volume_db = -20.0
 autoplay = true
 mix_target = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0, 1, 0, 0.388235)
-offset_left = 5.0
-offset_top = 175.0
-offset_right = 1155.0
-offset_bottom = 423.0
+[node name="Glow" type="TextureRect" parent="."]
+modulate = Color(0, 0.247059, 0, 0.247059)
+offset_left = -567.0
+offset_top = -708.0
+offset_right = 1709.0
+offset_bottom = 1240.0
+mouse_filter = 2
 texture = ExtResource("5_k1nyd")
 
 [node name="GlowTimer" type="Timer" parent="."]

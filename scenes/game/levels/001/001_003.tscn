@@ -282,7 +282,7 @@ stream = ExtResource("7_w5pxu")
 stream = ExtResource("8_6nisa")
 
 [node name="player_start" type="CollisionShape2D" parent="."]
-position = Vector2(-687, 601)
+position = Vector2(-687, 636)
 shape = SubResource("RectangleShape2D_b7qhq")
 debug_color = Color(0.941176, 0.4, 0.592157, 1)
 
@@ -312,6 +312,8 @@ texture = ExtResource("10_x4o33")
 
 [node name="Exit" type="Area2D" parent="."]
 position = Vector2(-646, -248)
+collision_layer = 3
+collision_mask = 3
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
