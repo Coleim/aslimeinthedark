@@ -2,7 +2,7 @@ extends Node2D
 
 const main_screen = preload("res://scenes/menu/main_screen.tscn")
 
-const start_level_at = 0
+const start_level_at = 7
 
 @onready var camera: Camera2D = $PlayerFollowCamera
 var camera_start_position: Vector2 
@@ -126,10 +126,13 @@ func create_level(level):
 			camera.level_limit_top = level.limit_top
 		else: 
 			camera.level_limit_top = 0
-			
 		
 		$Player.follow_camera = camera
 		$PlayerFollowCamera.position.x = $Player.position.x
+		
+		if $Player.position.x < level.limit_left:
+			$PlayerFollowCamera.position.x = level.limit_left
+		
 		
 		$Player.show()
 		$PlayerFollowCamera/HUD.show()

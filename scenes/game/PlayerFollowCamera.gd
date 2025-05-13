@@ -7,6 +7,9 @@ extends Camera2D
 @export var level_limit_bottom = 0
 
 func _process(_delta):
+	print("process")
+	print( "player_position: " , player_position )
+	print( "level_limit_left: " , level_limit_left )
 	if player_position.x > level_limit_left && player_position.x < level_limit_right :
 		position.x = player_position.x
 	if player_position.y > level_limit_top && player_position.y < level_limit_bottom :

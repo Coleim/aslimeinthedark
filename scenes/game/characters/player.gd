@@ -22,8 +22,8 @@ signal poweritem_collected
 
 var previousCollision
 var infectedTiles = {}
-var can_jump = false
-#var can_jump = true
+#var can_jump = false
+var can_jump = true
 var heading_right = true
 
 func reset():
@@ -86,13 +86,12 @@ func _physics_process(delta):
 	move_and_slide()
 	play_animations()
 	
-	#print( "Position 002 : " , position)
+	print( "Position : " , position)
 	if follow_camera:
 		var camera_size = get_viewport_rect().size * follow_camera.zoom
 		var camera_rect = Rect2(follow_camera.get_screen_center_position() - camera_size / 2, camera_size)
 		position.x = clamp(position.x, camera_rect.position.x + 55, camera_rect.size.x+camera_rect.position.x - 55)
-	#print( "Position 002 : " , position)
-	
+
 	var processed_colliders = []
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)

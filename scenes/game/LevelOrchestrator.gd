@@ -8,6 +8,7 @@ const _001_002 = preload("res://scenes/game/levels/001/001_002.tscn")
 const _001_001_music = preload("res://assets/audio/001_001_loop.mp3")
 const _001_003 = preload("res://scenes/game/levels/001/001_003.tscn")
 const _001_004 = preload("res://scenes/game/levels/001/001_004.tscn")
+const _001_005 = preload("res://scenes/game/levels/001/001_005.tscn")
 
 const _001_002_music = preload("res://assets/audio/001_002.mp3")
 
@@ -22,6 +23,7 @@ const level_list = [
 	[ _001_002, _001_002_music ],
 	[ _001_003, null ],
 	[ _001_004, null ],
+	[ _001_005, null ],
 ]
 
 func getCurrentScene():
