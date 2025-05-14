@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgmvtbewkmv4x"]
+
+[ext_resource type="Texture2D" uid="uid://c6uxwmeiwvpmy" path="res://_art_resources/disket.png" id="1_oxpo1"]
+[ext_resource type="Script" path="res://scenes/menu/HUD.gd" id="1_x8wal"]
+[ext_resource type="FontFile" uid="uid://dtawjt8k8ebw2" path="res://assets/fonts/XTypewriter-Regular.ttf" id="2_2lcwj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xptju"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s04mm"]
+light_mode = 1
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x8wal")
+
+[node name="DisketIcon" type="TextureRect" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_xptju")
+layout_mode = 0
+offset_left = 1099.0
+offset_top = 16.0
+offset_right = 1159.0
+offset_bottom = 76.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_oxpo1")
+
+[node name="DisketCount" type="RichTextLabel" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_s04mm")
+layout_mode = 0
+offset_left = 965.0
+offset_top = 15.0
+offset_right = 1095.0
+offset_bottom = 45.0
+theme_override_fonts/normal_font = ExtResource("2_2lcwj")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+fit_content = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://b00yqsjmsjyh4"]
+[gd_scene load_steps=51 format=3 uid="uid://b00yqsjmsjyh4"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/animations/003_cuve.gd" id="1_8fyfo"]
 [ext_resource type="Texture2D" uid="uid://bfbdim0ig1ett" path="res://assets/sprites/bip_lumineux.png" id="2_c6h8a"]
@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://ct38yhjpjhym7" path="res://assets/sprites/gaz_explode/Explosion_gas10.png" id="26_oqco7"]
 [ext_resource type="Texture2D" uid="uid://bjyplilhlhdrv" path="res://_art_resources/slime_spritesheet.png" id="29_du2q5"]
 [ext_resource type="PackedScene" uid="uid://b4l5fvx4ijt7b" path="res://scenes/game/characters/collectible.tscn" id="30_mfgi1"]
+[ext_resource type="Texture2D" uid="uid://c3dp3vrr6ubqg" path="res://_art_resources/lampe_plafond.png" id="31_fyfxx"]
+[ext_resource type="Texture2D" uid="uid://ouq6km0a8564" path="res://assets/lights/ceiling_light.png" id="32_3vvyo"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b8b8x"]
 blend_mode = 2
@@ -126,6 +128,86 @@ texture_region_size = Vector2i(90, 48)
 3:6/0 = 0
 3:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:6/0/physics_layer_0/angular_velocity = 0.0
+0:7/0 = 0
+0:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:7/0/physics_layer_0/angular_velocity = 0.0
+0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+1:7/0 = 0
+1:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:7/0/physics_layer_0/angular_velocity = 0.0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+0:8/0 = 0
+0:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:8/0/physics_layer_0/angular_velocity = 0.0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+1:8/0 = 0
+1:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:8/0/physics_layer_0/angular_velocity = 0.0
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+2:8/0 = 0
+2:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:8/0/physics_layer_0/angular_velocity = 0.0
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+3:8/0 = 0
+3:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:8/0/physics_layer_0/angular_velocity = 0.0
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+3:9/0 = 0
+3:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:9/0/physics_layer_0/angular_velocity = 0.0
+3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+2:9/0 = 0
+2:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:9/0/physics_layer_0/angular_velocity = 0.0
+2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+1:9/0 = 0
+1:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:9/0/physics_layer_0/angular_velocity = 0.0
+1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+0:9/0 = 0
+0:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:9/0/physics_layer_0/angular_velocity = 0.0
+0:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+0:10/0 = 0
+0:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:10/0/physics_layer_0/angular_velocity = 0.0
+0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+1:10/0 = 0
+1:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:10/0/physics_layer_0/angular_velocity = 0.0
+1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+2:10/0 = 0
+2:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:10/0/physics_layer_0/angular_velocity = 0.0
+2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+3:10/0 = 0
+3:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:10/0/physics_layer_0/angular_velocity = 0.0
+3:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -24, 45, -24, 45, 24, -45, 24)
+3:11/0 = 0
+3:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:11/0/physics_layer_0/angular_velocity = 0.0
+2:11/0 = 0
+2:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:11/0/physics_layer_0/angular_velocity = 0.0
+2:12/0 = 0
+2:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:12/0/physics_layer_0/angular_velocity = 0.0
+3:12/0 = 0
+3:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:12/0/physics_layer_0/angular_velocity = 0.0
+1:12/0 = 0
+1:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:12/0/physics_layer_0/angular_velocity = 0.0
+0:12/0 = 0
+0:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:12/0/physics_layer_0/angular_velocity = 0.0
+0:11/0 = 0
+0:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:11/0/physics_layer_0/angular_velocity = 0.0
+1:11/0 = 0
+1:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:11/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_4ns0r"]
 tile_size = Vector2i(90, 48)
@@ -491,3 +573,48 @@ region_rect = Rect2(78.248, 946.726, 166.375, 216.953)
 [node name="Collectible" parent="." instance=ExtResource("30_mfgi1")]
 position = Vector2(-369, 578)
 input_pickable = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(479, 44)
+texture = ExtResource("31_fyfxx")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D7"]
+position = Vector2(3.37502, 220.868)
+scale = Vector2(17.8281, 23.0843)
+texture = ExtResource("32_3vvyo")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(1063, 44)
+texture = ExtResource("31_fyfxx")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D10"]
+position = Vector2(3.37502, 220.868)
+scale = Vector2(17.8281, 23.0843)
+texture = ExtResource("32_3vvyo")
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+position = Vector2(1599, 44)
+texture = ExtResource("31_fyfxx")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D11"]
+position = Vector2(3.37502, 220.868)
+scale = Vector2(17.8281, 23.0843)
+texture = ExtResource("32_3vvyo")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(-70, 44)
+texture = ExtResource("31_fyfxx")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D8"]
+position = Vector2(3.37502, 220.868)
+scale = Vector2(17.8281, 23.0843)
+texture = ExtResource("32_3vvyo")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(-614, 44)
+texture = ExtResource("31_fyfxx")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D9"]
+position = Vector2(3.37502, 220.868)
+scale = Vector2(17.8281, 23.0843)
+texture = ExtResource("32_3vvyo")

@@ -30,6 +30,7 @@ func _ready():
 	velocity.x -= 1
 	velocity = velocity * 50
 	camera.position += velocity
+	print( camera.position )
 	
 	$Rain.material.set_shader_parameter("rain_amount", 500)
 	$Rain.material.set_shader_parameter("near_rain_length", 0.083)
@@ -49,6 +50,7 @@ func _process(delta):
 	velocity.x -= 1
 	velocity = velocity * 50
 	camera.position += velocity * delta
+	print( camera.position )
 
 func _hideFlash():
 	$CanvasModulate.show()
@@ -58,6 +60,7 @@ func _hideFlash():
 	
 func _playFlash():
 	if count > 3:
+		print("ENDED")
 		scened_ended.emit()
 	else:
 		$CanvasModulate.hide()

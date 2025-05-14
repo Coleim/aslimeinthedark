@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://j0q5kki8xrih"]
+[gd_scene load_steps=10 format=3 uid="uid://j0q5kki8xrih"]
 
 [ext_resource type="Script" path="res://scenes/0_debug/sandbox.gd" id="1_e6qsl"]
 [ext_resource type="PackedScene" uid="uid://csehucrahncf5" path="res://scenes/game/characters/player.tscn" id="1_ypghu"]
@@ -129,14 +129,19 @@ tile_size = Vector2i(90, 48)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_2u1ki")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vc8tu"]
+size = Vector2(501, 20)
+
 [node name="sandbox" type="Node2D"]
 script = ExtResource("1_e6qsl")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 position = Vector2(-4, -4)
 color = Color(0.407843, 0.407843, 0.407843, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 position = Vector2(-18, -14)
 tile_set = SubResource("TileSet_ekiim")
 format = 2
@@ -159,7 +164,7 @@ region_rect = Rect2(413.541, 477.401, 122.943, 84.0107)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_ypghu")]
-position = Vector2(464, 572)
+position = Vector2(890, 601)
 
 [node name="Collectible" parent="." instance=ExtResource("4_pyqos")]
 position = Vector2(-716, 541)
@@ -177,3 +182,9 @@ script = ExtResource("3_irb8t")
 position = Vector2(1406, 535)
 scale = Vector2(0.5, 0.5)
 input_pickable = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(927.5, 690)
+shape = SubResource("RectangleShape2D_vc8tu")
