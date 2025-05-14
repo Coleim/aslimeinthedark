@@ -2,7 +2,7 @@ extends Node2D
 
 const main_screen = preload("res://scenes/menu/main_screen.tscn")
 
-const start_level_at = 7
+const start_level_at = 0
 
 @onready var camera: Camera2D = $PlayerFollowCamera
 var camera_start_position: Vector2 
